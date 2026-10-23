@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <div className="bg-[#203A43] w-full h-[100vh] flex items-start justify-center relative">
+    <div className="min-h-screen w-full bg-[#f8fafc] text-slate-800 flex flex-col items-center justify-start relative selection:bg-indigo-500 selection:text-white">
       {isStartGame ? (
         <Game
           player1={player1}

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaCrown } from "react-icons/fa";
+import { PiTimerFill } from "react-icons/pi";
 import { icons } from "../utils/icons";
 
 const PlayerCard = ({
@@ -58,7 +60,7 @@ const PlayerCard = ({
     }
 
     return () => clearInterval(timer);
-  }, [activePlayer, isRunning, time1, time2, status]);
+  }, [activePlayer, isRunning, time1, time2, status, setIsRunning, setStatus, setTime1, setTime2]);
 
   useEffect(() => {
     if (xIsNext) {
@@ -69,62 +71,105 @@ const PlayerCard = ({
   }, [xIsNext]);
 
   return (
-    <div className="w-full h-[70px] rounded-lg bg-[#669bbc] flex items-center justify-between px-10">
-      <div className="flex items-center gap-5">
+    <div className="w-full rounded-2xl bg-white border border-slate-200 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-xs">
+      {/* Player 1 Card */}
+      <div
+        className={`flex items-center gap-3.5 p-3 rounded-xl transition-all ${
+          activePlayer === 1 && !status
+            ? "bg-indigo-50/80 border-2 border-indigo-500 shadow-xs"
+            : "bg-slate-50 border border-slate-200"
+        }`}
+      >
         <div
-          className={`w-[50px] h-[50px] rounded-full ${selectedColor1} flex items-center justify-center text-white`}
+          className={`w-11 h-11 rounded-xl ${selectedColor1} flex items-center justify-center text-white text-xl shadow-xs`}
         >
-          <icon1.icon className="text-[25px]" />
+          {icon1?.icon ? <icon1.icon /> : <span>X</span>}
         </div>
         <div>
-          <h2 className="text-white font-bold">{player1}</h2>
-          <div className="border border-[#FFD700] rounded-sm px-3 py-[1px] text-[12px] text-white">
-            {time1}
+          <div className="flex items-center gap-1.5">
+            <h2 className="text-slate-900 font-bold text-sm sm:text-base">{player1 || "Player 1"}</h2>
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-700 font-bold">X</span>
+          </div>
+          <div className="flex items-center gap-1 mt-1 text-slate-500 text-xs">
+            <PiTimerFill className="text-amber-500 text-sm" />
+            <span className={`font-mono font-bold ${time1 <= 5 ? "text-rose-600 font-extrabold" : "text-slate-700"}`}>
+              {time1}s left
+            </span>
           </div>
         </div>
       </div>
-      <div>
+
+      {/* Middle Status / Winner Badge */}
+      <div className="flex flex-col items-center">
         {status ? (
-          <div className="text-white flex items-center gap-2">
-            Winner:{" "}
-            <div
-              className={`${status === "X" && selectedColor1} ${
-                status === "O" && selectedColor2
-              } w-[20px] h-[20px] rounded-full flex items-center justify-center`}
-            >
-              {status === "X" && <icon1.icon className="text-[10px]" />}
-              {status === "O" && <icon2.icon className="text-[10px]" />}
-              {status === "draw" && <p className="pl-1"> Draw</p>}
-            </div>
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-amber-50 border border-amber-200">
+            {status === "draw" ? (
+              <span className="text-amber-800 font-bold text-sm">🤝 Match Draw</span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <FaCrown className="text-amber-500 text-base" />
+                <span className="text-slate-900 font-bold text-sm">
+                  Winner: {status === "X" ? player1 : player2}
+                </span>
+                <div
+                  className={`w-6 h-6 rounded-md ${
+                    status === "X" ? selectedColor1 : selectedColor2
+                  } flex items-center justify-center text-white text-xs`}
+                >
+                  {status === "X" ? (
+                    icon1?.icon && <icon1.icon />
+                  ) : (
+                    icon2?.icon && <icon2.icon />
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         ) : (
-          <div className="text-white flex items-center gap-2">
-            Next Player:{" "}
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
+            <span className="text-xs text-slate-500 font-medium">Turn:</span>
             <div
-              className={`${
+              className={`w-5 h-5 rounded-md ${
                 xIsNext ? selectedColor1 : selectedColor2
-              } w-[20px] h-[20px] rounded-full flex items-center justify-center`}
+              } flex items-center justify-center text-white text-xs shadow-xs`}
             >
               {xIsNext ? (
-                <icon1.icon className="text-[10px]" />
+                icon1?.icon ? <icon1.icon /> : "X"
               ) : (
-                <icon2.icon className="text-[10px]" />
+                icon2?.icon ? <icon2.icon /> : "O"
               )}
             </div>
+            <span className="text-xs font-bold text-slate-800">
+              {xIsNext ? player1 : player2}
+            </span>
           </div>
         )}
       </div>
-      <div className="flex items-center gap-5">
-        <div className="flex flex-col items-center justify-end">
-          <h2 className="text-white font-bold">{player2}</h2>
-          <div className="border border-[#FFD700] rounded-sm px-3 py-[1px] text-[12px] text-white">
-            {time2}
+
+      {/* Player 2 Card */}
+      <div
+        className={`flex items-center gap-3.5 p-3 rounded-xl transition-all ${
+          activePlayer === 2 && !status
+            ? "bg-rose-50/80 border-2 border-rose-500 shadow-xs"
+            : "bg-slate-50 border border-slate-200"
+        }`}
+      >
+        <div className="text-right">
+          <div className="flex items-center justify-end gap-1.5">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 font-bold">O</span>
+            <h2 className="text-slate-900 font-bold text-sm sm:text-base">{player2 || "Player 2"}</h2>
+          </div>
+          <div className="flex items-center justify-end gap-1 mt-1 text-slate-500 text-xs">
+            <PiTimerFill className="text-amber-500 text-sm" />
+            <span className={`font-mono font-bold ${time2 <= 5 ? "text-rose-600 font-extrabold" : "text-slate-700"}`}>
+              {time2}s left
+            </span>
           </div>
         </div>
         <div
-          className={`w-[50px] h-[50px] rounded-full ${selectedColor2} flex items-center justify-center text-white`}
+          className={`w-11 h-11 rounded-xl ${selectedColor2} flex items-center justify-center text-white text-xl shadow-xs`}
         >
-          <icon2.icon className="text-[25px]" />
+          {icon2?.icon ? <icon2.icon /> : <span>O</span>}
         </div>
       </div>
     </div>
