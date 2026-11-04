@@ -46,7 +46,7 @@ const Lobby = () => {
       {/* 3D Esports Banner Hero Section */}
       <header className="w-full max-w-5xl px-4 sm:px-6 pt-6 pb-10 flex flex-col items-center text-center">
         {/* Top Tagline */}
-        <div className="flex items-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-black tracking-[0.25em] text-purple-400 uppercase mb-4 drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[10px] sm:text-xs font-black tracking-[0.15em] sm:tracking-[0.25em] text-purple-400 uppercase mb-4 drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]">
           <span>CLEAN</span>
           <span className="text-purple-600">|</span>
           <span>TACTICAL 3D</span>
@@ -57,7 +57,7 @@ const Lobby = () => {
         </div>
 
         {/* 3D Glowing Cyberpunk Banner */}
-        <div className="w-full rounded-3xl cyber-neon-border relative overflow-hidden bg-gradient-to-r from-[#0d091e] via-[#140d30] to-[#0a0718] p-6 sm:p-10 shadow-[0_0_60px_rgba(168,85,247,0.4)]">
+        <div className="w-full rounded-3xl cyber-neon-border relative overflow-hidden bg-gradient-to-r from-[#0d091e] via-[#140d30] to-[#0a0718] p-5 sm:p-8 md:p-10 shadow-[0_0_60px_rgba(168,85,247,0.4)]">
           {/* Subtle Cyber Perspective Grid & Ambient Flare */}
           <div className="absolute inset-0 cyber-rays-pattern opacity-50 pointer-events-none" />
           <div className="absolute top-1/2 right-[20%] -translate-y-1/2 w-96 h-96 bg-purple-600/30 blur-[100px] rounded-full pointer-events-none" />
@@ -68,10 +68,10 @@ const Lobby = () => {
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               {/* 3D Layered Typography */}
               <div className="select-none">
-                <span className="inline-block text-4xl sm:text-6xl md:text-7xl font-black italic tracking-tighter text-3d-yellow leading-none">
+                <span className="inline-block text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl font-black italic tracking-tighter text-3d-yellow leading-none">
                   TIC TAC
                 </span>
-                <span className="block text-4xl sm:text-6xl md:text-7xl font-black italic tracking-tighter text-3d-purple leading-none mt-1 sm:mt-2">
+                <span className="block text-3xl min-[380px]:text-4xl sm:text-6xl md:text-7xl font-black italic tracking-tighter text-3d-purple leading-none mt-1 sm:mt-2">
                   ARENA 3D
                 </span>
               </div>
@@ -120,7 +120,7 @@ const Lobby = () => {
               {/* Outer Glow Halo */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-purple-600/40 via-cyan-500/20 to-transparent rounded-3xl blur-2xl pointer-events-none" />
 
-              <div className="relative rounded-2xl overflow-hidden border-2 border-purple-500/60 shadow-[0_0_40px_rgba(168,85,247,0.5)] group max-w-[340px] sm:max-w-[380px]">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-purple-500/60 shadow-[0_0_40px_rgba(168,85,247,0.5)] group max-w-[280px] min-[380px]:max-w-[340px] sm:max-w-[380px] w-full">
                 <img
                   src="/hero-character.jpg"
                   alt="3D Tactical Cyberpunk Character"

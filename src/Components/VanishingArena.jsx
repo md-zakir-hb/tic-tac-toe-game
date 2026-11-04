@@ -147,21 +147,21 @@ const VanishingArena = () => {
       </div>
 
       {/* Players Profile & Pieces Indicator */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-3 items-center bg-slate-900/80 border border-rose-500/40 p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 items-center bg-slate-900/80 border border-rose-500/40 p-2.5 sm:p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
         {/* Player 1 Card */}
         <div
-          className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+          className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
             turn === "X" && !winnerData.winner
               ? "bg-rose-950/60 border-2 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.3)] scale-[1.02]"
               : "bg-slate-950/60 border border-purple-500/20"
           }`}
         >
-          <div className="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(244,63,94,0.4)] shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-lg sm:text-xl shadow-[0_0_15px_rgba(244,63,94,0.4)] shrink-0">
             <GiFox />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1">
-              <span className="font-bold text-white text-sm truncate">
+              <span className="font-bold text-white text-xs sm:text-sm truncate">
                 {vsAI ? "You" : "Player 1"}
               </span>
               <span className="text-[10px] font-black text-rose-300 bg-rose-950 px-1 rounded border border-rose-500/40">X</span>
@@ -171,21 +171,21 @@ const VanishingArena = () => {
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                     i < p1Moves.length ? "bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]" : "bg-slate-700"
                   }`}
                 />
               ))}
-              <span className="text-[10px] text-purple-300/70 font-mono ml-1">({p1Moves.length}/3)</span>
+              <span className="text-[9px] sm:text-[10px] text-purple-300/70 font-mono ml-0.5">({p1Moves.length}/3)</span>
             </div>
-            <p className="text-[10px] text-rose-200/70 mt-0.5">Wins: {scores.vanishing.player}</p>
+            <p className="text-[9px] sm:text-[10px] text-rose-200/70 mt-0.5 truncate">Wins: {scores.vanishing.player}</p>
           </div>
         </div>
 
         {/* Center Live Status */}
         <div className="col-span-2 sm:col-span-1 order-last sm:order-none flex flex-col items-center justify-center">
           {winnerData.winner ? (
-            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+            <div className="flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               <FaCrown className="text-amber-400" />
               <span>
                 {winnerData.winner === "X"
@@ -198,7 +198,7 @@ const VanishingArena = () => {
               </span>
             </div>
           ) : (
-            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 border border-rose-500/30 text-xs font-semibold text-rose-300">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/80 border border-rose-500/30 text-[11px] sm:text-xs font-semibold text-rose-300">
               <PiHourglassFill className="text-rose-400" />
               <span className="font-bold flex items-center gap-1 text-white">
                 {turn === "X" ? (
@@ -215,7 +215,7 @@ const VanishingArena = () => {
 
         {/* Player 2 Card */}
         <div
-          className={`flex items-center justify-end gap-3 p-3 rounded-xl transition-all ${
+          className={`flex items-center justify-end gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
             turn === "O" && !winnerData.winner
               ? "bg-purple-950/60 border-2 border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.3)] scale-[1.02]"
               : "bg-slate-950/60 border border-purple-500/20"
@@ -224,33 +224,33 @@ const VanishingArena = () => {
           <div className="text-right min-w-0">
             <div className="flex items-center justify-end gap-1">
               <span className="text-[10px] font-black text-purple-300 bg-purple-950 px-1 rounded border border-purple-500/40">O</span>
-              <span className="font-bold text-white text-sm truncate">
+              <span className="font-bold text-white text-xs sm:text-sm truncate">
                 {vsAI ? "Smart Bot" : "Player 2"}
               </span>
             </div>
             {/* 3 Pieces Dots */}
             <div className="flex items-center justify-end gap-1 mt-1">
-              <span className="text-[10px] text-purple-300/70 font-mono mr-1">({p2Moves.length}/3)</span>
+              <span className="text-[9px] sm:text-[10px] text-purple-300/70 font-mono mr-0.5">({p2Moves.length}/3)</span>
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                     i < p2Moves.length ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" : "bg-slate-700"
                   }`}
                 />
               ))}
             </div>
-            <p className="text-[10px] text-purple-200/70 mt-0.5">Wins: {scores.vanishing.ai}</p>
+            <p className="text-[9px] sm:text-[10px] text-purple-200/70 mt-0.5 truncate">Wins: {scores.vanishing.ai}</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(168,85,247,0.4)] shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg sm:text-xl shadow-[0_0_15px_rgba(168,85,247,0.4)] shrink-0">
             {vsAI ? <FaRobot /> : <GiLion />}
           </div>
         </div>
       </div>
 
       {/* 3x3 Dynamic Vanishing Grid */}
-      <div className="p-4 sm:p-6 rounded-3xl bg-slate-950/80 border-2 border-rose-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(244,63,94,0.1)] mb-6">
-        <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5">
+      <div className="p-3 min-[360px]:p-4 sm:p-6 rounded-3xl bg-slate-950/80 border-2 border-rose-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(244,63,94,0.1)] mb-6">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3.5">
           {board.map((val, idx) => {
             const isWinningCell = winnerData.line && winnerData.line.includes(idx);
             const isP1Oldest = p1Moves.length === 3 && p1Moves[0] === idx;
@@ -268,11 +268,11 @@ const VanishingArena = () => {
                   (vsAI && turn !== "X") ||
                   (val !== null && !willVanishOnCurrentTurn)
                 }
-                className={`w-20 h-20 sm:w-28 sm:h-28 rounded-2xl flex flex-col items-center justify-center relative transition-all duration-200 select-none ${
+                className={`w-[68px] h-[68px] min-[360px]:w-20 min-[360px]:h-20 sm:w-28 sm:h-28 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center relative transition-all duration-200 select-none ${
                   isWinningCell
                     ? "bg-emerald-900/80 border-4 border-emerald-400 text-emerald-200 scale-105 shadow-[0_0_30px_rgba(16,185,129,0.7)] z-10"
                     : willVanishOnCurrentTurn
-                    ? "ring-4 ring-dashed ring-amber-400 animate-pulse scale-95 shadow-[0_0_25px_rgba(250,204,21,0.5)]"
+                    ? "ring-3 sm:ring-4 ring-dashed ring-amber-400 animate-pulse scale-95 shadow-[0_0_25px_rgba(250,204,21,0.5)]"
                     : ""
                 } ${
                   val === "X"
@@ -287,20 +287,20 @@ const VanishingArena = () => {
                 }`}
               >
                 {willVanishOnCurrentTurn && (
-                  <span className="absolute top-1 text-[8px] sm:text-[9px] font-black uppercase tracking-tight text-amber-950 bg-amber-400 px-1.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.8)]">
+                  <span className="absolute top-1 text-[7px] sm:text-[9px] font-black uppercase tracking-tight text-amber-950 bg-amber-400 px-1 sm:px-1.5 py-0.5 rounded-full shadow-[0_0_8px_rgba(250,204,21,0.8)]">
                     ⏳ Vanishes
                   </span>
                 )}
 
-                {val === "X" && <GiFox className="text-3xl sm:text-4xl text-rose-400" />}
+                {val === "X" && <GiFox className="text-2xl min-[360px]:text-3xl sm:text-4xl text-rose-400" />}
                 {val === "O" && (
                   vsAI ? (
-                    <FaRobot className="text-3xl sm:text-4xl text-purple-400" />
+                    <FaRobot className="text-2xl min-[360px]:text-3xl sm:text-4xl text-purple-400" />
                   ) : (
-                    <GiLion className="text-3xl sm:text-4xl text-amber-400" />
+                    <GiLion className="text-2xl min-[360px]:text-3xl sm:text-4xl text-amber-400" />
                   )
                 )}
-                {!val && <span className="text-rose-500/30 text-xl font-light">·</span>}
+                {!val && <span className="text-rose-500/30 text-lg sm:text-xl font-light">·</span>}
               </button>
             );
           })}

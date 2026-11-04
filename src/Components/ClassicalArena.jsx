@@ -135,26 +135,26 @@ const ClassicalArena = () => {
       </div>
 
       {/* Players Profile & Live Turn Card */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-3 items-center bg-slate-900/80 border border-purple-500/30 p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 items-center bg-slate-900/80 border border-purple-500/30 p-2.5 sm:p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
         {/* Player 1 Card */}
         <div
-          className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+          className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
             xIsNext && !winnerData.winner
               ? "bg-rose-950/60 border-2 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.3)] scale-[1.02]"
               : "bg-slate-950/60 border border-purple-500/20"
           }`}
         >
-          <div className="w-10 h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(244,63,94,0.4)] shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-rose-500 text-white flex items-center justify-center text-lg sm:text-xl shadow-[0_0_15px_rgba(244,63,94,0.4)] shrink-0">
             <GiFox />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1">
-              <span className="font-bold text-white text-sm truncate">
+              <span className="font-bold text-white text-xs sm:text-sm truncate">
                 {vsAI ? "You" : "Player 1"}
               </span>
               <span className="text-[10px] font-black text-rose-300 bg-rose-950 px-1 rounded border border-rose-500/40">X</span>
             </div>
-            <p className="text-[11px] text-purple-300/70 font-medium">Wins: {scores.classical.player}</p>
+            <p className="text-[10px] sm:text-[11px] text-purple-300/70 font-medium truncate">Wins: {scores.classical.player}</p>
           </div>
         </div>
 
@@ -188,7 +188,7 @@ const ClassicalArena = () => {
                 {xIsNext ? (
                   <span>Player 1 (Fox 🦊)</span>
                 ) : vsAI ? (
-                  <span>{isAiThinking ? "🤖 Bot Thinking..." : "Smart Bot's Turn"}</span>
+                  <span>{isAiThinking ? "🤖 Bot..." : "Smart Bot"}</span>
                 ) : (
                   <span>Player 2 (Lion 🦁)</span>
                 )}
@@ -199,7 +199,7 @@ const ClassicalArena = () => {
 
         {/* Player 2 Card */}
         <div
-          className={`flex items-center justify-end gap-3 p-3 rounded-xl transition-all ${
+          className={`flex items-center justify-end gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
             !xIsNext && !winnerData.winner
               ? "bg-purple-950/60 border-2 border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.3)] scale-[1.02]"
               : "bg-slate-950/60 border border-purple-500/20"
@@ -208,21 +208,21 @@ const ClassicalArena = () => {
           <div className="text-right min-w-0">
             <div className="flex items-center justify-end gap-1">
               <span className="text-[10px] font-black text-purple-300 bg-purple-950 px-1 rounded border border-purple-500/40">O</span>
-              <span className="font-bold text-white text-sm truncate">
+              <span className="font-bold text-white text-xs sm:text-sm truncate">
                 {vsAI ? "Smart Bot" : "Player 2"}
               </span>
             </div>
-            <p className="text-[11px] text-purple-300/70 font-medium">Wins: {scores.classical.ai}</p>
+            <p className="text-[10px] sm:text-[11px] text-purple-300/70 font-medium truncate">Wins: {scores.classical.ai}</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(168,85,247,0.4)] shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg sm:text-xl shadow-[0_0_15px_rgba(168,85,247,0.4)] shrink-0">
             {vsAI ? <FaRobot /> : <GiLion />}
           </div>
         </div>
       </div>
 
       {/* 3x3 Interactive Classical Board */}
-      <div className="p-4 sm:p-6 rounded-3xl bg-slate-950/80 border-2 border-purple-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(168,85,247,0.15)] mb-6">
-        <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5">
+      <div className="p-3 min-[360px]:p-4 sm:p-6 rounded-3xl bg-slate-950/80 border-2 border-purple-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(168,85,247,0.15)] mb-6">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3.5">
           {board.map((val, idx) => {
             const isWinningCell = winnerData.line && winnerData.line.includes(idx);
 
@@ -231,7 +231,7 @@ const ClassicalArena = () => {
                 key={idx}
                 onClick={() => handleCellClick(idx)}
                 disabled={!!val || !!winnerData.winner || isAiThinking || (vsAI && !xIsNext)}
-                className={`w-20 h-20 sm:w-28 sm:h-28 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-black transition-all select-none ${
+                className={`w-[68px] h-[68px] min-[360px]:w-20 min-[360px]:h-20 sm:w-28 sm:h-28 rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl min-[360px]:text-3xl sm:text-4xl font-black transition-all select-none ${
                   isWinningCell
                     ? "bg-emerald-900/80 border-4 border-emerald-400 text-emerald-200 scale-105 shadow-[0_0_30px_rgba(16,185,129,0.7)] z-10"
                     : val === "X"
@@ -243,12 +243,12 @@ const ClassicalArena = () => {
                     : "bg-slate-900/60 hover:bg-slate-800/80 border border-purple-500/30 hover:border-purple-400 shadow-sm cursor-pointer active:scale-95"
                 }`}
               >
-                {val === "X" && <GiFox className="text-3xl sm:text-4xl text-rose-400" />}
+                {val === "X" && <GiFox className="text-2xl min-[360px]:text-3xl sm:text-4xl text-rose-400" />}
                 {val === "O" && (
                   vsAI ? (
-                    <FaRobot className="text-3xl sm:text-4xl text-purple-400" />
+                    <FaRobot className="text-2xl min-[360px]:text-3xl sm:text-4xl text-purple-400" />
                   ) : (
-                    <GiLion className="text-3xl sm:text-4xl text-amber-400" />
+                    <GiLion className="text-2xl min-[360px]:text-3xl sm:text-4xl text-amber-400" />
                   )
                 )}
                 {!val && <span className="text-purple-500/30 text-xl font-light">·</span>}

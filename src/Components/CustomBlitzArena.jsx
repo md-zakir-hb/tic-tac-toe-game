@@ -157,28 +157,28 @@ const CustomBlitzArena = () => {
         </div>
 
         {/* Players Profile & Countdown Clocks Card */}
-        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-3 items-center bg-slate-900/80 border border-purple-500/40 p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 items-center bg-slate-900/80 border border-purple-500/40 p-2.5 sm:p-4 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] mb-6 backdrop-blur-md">
           {/* Player 1 Card */}
           <div
-            className={`flex items-center gap-3 p-3 rounded-xl transition-all ${
+            className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
               xIsNext && !status
                 ? "bg-indigo-950/60 border-2 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)] scale-[1.02]"
                 : "bg-slate-950/60 border border-purple-500/20"
             }`}
           >
             <div
-              className={`w-11 h-11 rounded-xl ${selectedColor1} flex items-center justify-center text-white text-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] shrink-0`}
+              className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${selectedColor1} flex items-center justify-center text-white text-lg sm:text-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] shrink-0`}
             >
               {icon1?.icon ? <icon1.icon /> : <span>X</span>}
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold text-white text-sm truncate">
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <span className="font-bold text-white text-xs sm:text-sm truncate">
                   {player1 || "Player 1"}
                 </span>
                 <span className="text-[10px] font-black text-indigo-300 bg-indigo-950 px-1 rounded border border-indigo-500/40">X</span>
               </div>
-              <div className="flex items-center gap-1 mt-1 text-xs">
+              <div className="flex flex-wrap items-center gap-1 mt-1 text-[10px] sm:text-xs">
                 <PiTimerFill className="text-amber-400" />
                 <span
                   className={`font-mono font-bold ${
@@ -187,8 +187,8 @@ const CustomBlitzArena = () => {
                 >
                   {time1}s left
                 </span>
-                <span className="text-purple-700 ml-1">•</span>
-                <span className="text-[10px] text-purple-300/70 font-semibold ml-1">Wins: {scores.custom.player1}</span>
+                <span className="text-purple-700 hidden sm:inline">•</span>
+                <span className="text-[9px] sm:text-[10px] text-purple-300/70 font-semibold truncate">Wins: {scores.custom.player1}</span>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@ const CustomBlitzArena = () => {
           {/* Center Outcome / Turn Badge */}
           <div className="col-span-2 sm:col-span-1 order-last sm:order-none flex flex-col items-center justify-center">
             {status ? (
-              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+              <div className="flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                 <FaCrown className="text-amber-400" />
                 <span>
                   {status === "draw"
@@ -207,9 +207,9 @@ const CustomBlitzArena = () => {
                 </span>
               </div>
             ) : (
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 border border-purple-500/30 text-xs font-semibold text-purple-200">
+              <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/80 border border-purple-500/30 text-[11px] sm:text-xs font-semibold text-purple-200">
                 <span className="text-[11px] text-purple-400">Turn:</span>
-                <span className="font-bold text-white">
+                <span className="font-bold text-white truncate max-w-[120px] sm:max-w-none">
                   {xIsNext ? player1 || "Player 1" : player2 || "Player 2"}
                 </span>
               </div>
@@ -218,22 +218,22 @@ const CustomBlitzArena = () => {
 
           {/* Player 2 Card */}
           <div
-            className={`flex items-center justify-end gap-3 p-3 rounded-xl transition-all ${
+            className={`flex items-center justify-end gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl transition-all ${
               !xIsNext && !status
                 ? "bg-rose-950/60 border-2 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.3)] scale-[1.02]"
                 : "bg-slate-950/60 border border-purple-500/20"
             }`}
           >
             <div className="text-right min-w-0">
-              <div className="flex items-center justify-end gap-1.5">
+              <div className="flex items-center justify-end gap-1 sm:gap-1.5">
                 <span className="text-[10px] font-black text-rose-300 bg-rose-950 px-1 rounded border border-rose-500/40">O</span>
-                <span className="font-bold text-white text-sm truncate">
+                <span className="font-bold text-white text-xs sm:text-sm truncate">
                   {player2 || "Player 2"}
                 </span>
               </div>
-              <div className="flex items-center justify-end gap-1 mt-1 text-xs">
-                <span className="text-[10px] text-purple-300/70 font-semibold mr-1">Wins: {scores.custom.player2}</span>
-                <span className="text-purple-700 mr-1">•</span>
+              <div className="flex flex-wrap items-center justify-end gap-1 mt-1 text-[10px] sm:text-xs">
+                <span className="text-[9px] sm:text-[10px] text-purple-300/70 font-semibold truncate">Wins: {scores.custom.player2}</span>
+                <span className="text-purple-700 hidden sm:inline">•</span>
                 <PiTimerFill className="text-amber-400" />
                 <span
                   className={`font-mono font-bold ${
@@ -245,7 +245,7 @@ const CustomBlitzArena = () => {
               </div>
             </div>
             <div
-              className={`w-11 h-11 rounded-xl ${selectedColor2} flex items-center justify-center text-white text-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] shrink-0`}
+              className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl ${selectedColor2} flex items-center justify-center text-white text-lg sm:text-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] shrink-0`}
             >
               {icon2?.icon ? <icon2.icon /> : <span>O</span>}
             </div>
@@ -253,7 +253,7 @@ const CustomBlitzArena = () => {
         </div>
 
         {/* 3x3 Custom Grid */}
-        <div className="p-3 sm:p-5 rounded-3xl bg-slate-950/80 border-2 border-purple-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(168,85,247,0.15)] mb-6">
+        <div className="p-3 min-[360px]:p-4 sm:p-5 rounded-3xl bg-slate-950/80 border-2 border-purple-500/40 shadow-[0_0_40px_rgba(0,0,0,0.8),inset_0_0_25px_rgba(168,85,247,0.15)] mb-6">
           <div className="grid grid-cols-3">
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <Square

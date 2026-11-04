@@ -15,7 +15,7 @@ const Square = ({
   return (
     <button
       onClick={onSquareClick}
-      className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 m-1.5 sm:m-2 rounded-2xl cursor-pointer flex items-center justify-center text-3xl sm:text-4xl text-white font-bold transition-all select-none ${
+      className={`w-[66px] h-[66px] min-[360px]:w-[76px] min-[360px]:h-[76px] sm:w-24 sm:h-24 md:w-28 md:h-28 m-1 min-[360px]:m-1.5 sm:m-2 rounded-xl sm:rounded-2xl cursor-pointer flex items-center justify-center text-2xl min-[360px]:text-3xl sm:text-4xl text-white font-bold transition-all select-none ${
         isWinningCell
           ? "ring-4 ring-emerald-400 scale-105 z-10 shadow-[0_0_30px_rgba(16,185,129,0.7)]"
           : ""
