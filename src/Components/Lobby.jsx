@@ -94,31 +94,24 @@ const Lobby = () => {
                 </span>
               </div>
 
-              {/* Hero Action Buttons */}
+              {/* Hero Action Buttons - Clean & Focused */}
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => handleLaunchMode("classical")}
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm tracking-wider uppercase neon-glow-btn cursor-pointer active:scale-95"
+                  className="flex items-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm tracking-wider uppercase neon-glow-btn cursor-pointer active:scale-95"
                 >
                   <FaPlay className="text-xs" />
-                  <span>Enter Arena (Quick Play)</span>
+                  <span>Quick Play vs AI</span>
                 </button>
 
-                <button
-                  onClick={() => handleLaunchMode("dice")}
-                  className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/60 text-amber-300 font-bold text-xs sm:text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(250,204,21,0.25)] cursor-pointer active:scale-95"
+                <a
+                  href="#game-modes"
+                  onClick={() => playTapSound()}
+                  className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-500/40 text-purple-200 font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer active:scale-95"
                 >
-                  <FaDice className="text-base" />
-                  <span>Dice of Fate</span>
-                </button>
-
-                <button
-                  onClick={() => handleLaunchMode("vanishing")}
-                  className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/60 text-rose-300 font-bold text-xs sm:text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(244,63,94,0.25)] cursor-pointer active:scale-95"
-                >
-                  <PiHourglassFill className="text-base" />
-                  <span>Vanishing Blitz</span>
-                </button>
+                  <span>Select Game Mode</span>
+                  <span className="text-purple-400">↓</span>
+                </a>
               </div>
             </div>
 
@@ -149,63 +142,27 @@ const Lobby = () => {
             </div>
           </div>
         </div>
+      </header>
 
-        {/* Script Accent Subtitle & Neon Order-Style Pill */}
-        <div className="mt-8 flex flex-col items-center">
-          <p className="font-['Outfit'] italic text-purple-400 font-bold text-lg sm:text-xl drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">
-            Next-Gen Tactical Experience
-          </p>
-
-          <button
-            onClick={() => handleLaunchMode("classical")}
-            className="mt-3 px-8 py-3 rounded-2xl bg-purple-950/70 hover:bg-purple-900 border-2 border-purple-500 hover:border-purple-400 text-purple-100 font-black text-xs sm:text-sm tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:shadow-[0_0_50px_rgba(168,85,247,0.95)] cursor-pointer active:scale-95 flex items-center gap-2"
-          >
-            <TbTicTac className="text-lg text-purple-300" />
-            <span>PLAY ARENA NOW!</span>
-          </button>
-
-          {/* Quick Mode Links */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs font-bold text-purple-300/70 uppercase tracking-wider">
-            <button
-              onClick={() => handleLaunchMode("classical")}
-              className="hover:text-purple-200 transition-colors cursor-pointer"
-            >
-              Classical 3x3
-            </button>
-            <span className="text-purple-700">•</span>
-            <button
-              onClick={() => handleLaunchMode("dice")}
-              className="hover:text-amber-300 transition-colors cursor-pointer"
-            >
-              Dice of Fate
-            </button>
-            <span className="text-purple-700">•</span>
-            <button
-              onClick={() => handleLaunchMode("vanishing")}
-              className="hover:text-rose-300 transition-colors cursor-pointer"
-            >
-              Vanishing Blitz
-            </button>
-            <span className="text-purple-700">•</span>
-            <button
-              onClick={() => handleLaunchMode("custom")}
-              className="hover:text-emerald-300 transition-colors cursor-pointer"
-            >
-              Custom Timed PvP
-            </button>
+      {/* 4 Game Modes Grid - Clean Section with Natural Whitespace */}
+      <section id="game-modes" className="w-full max-w-5xl px-4 sm:px-6 py-4 sm:py-6 scroll-mt-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-2 border-b border-purple-500/10">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">Select Game Mode</h2>
+            <p className="text-xs sm:text-sm text-purple-300/70">Pick a battleground to start playing</p>
           </div>
 
-          {/* Global Stats Bar */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-6 bg-slate-900/60 border border-purple-500/30 px-5 py-2.5 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)] text-xs font-semibold text-purple-200/80 backdrop-blur-md">
+          {/* Clean Contextual Stats Pill */}
+          <div className="flex items-center gap-3 bg-slate-900/70 border border-purple-500/30 px-4 py-2 rounded-xl text-xs font-semibold text-purple-200/90 shadow-sm backdrop-blur-md self-start sm:self-auto">
             <div className="flex items-center gap-1.5">
               <span className="text-purple-400 font-black">{totalGamesPlayed}</span>
-              <span>Matches Played</span>
+              <span className="text-purple-300/70">Played</span>
             </div>
             <span className="text-purple-800">•</span>
             <div className="flex items-center gap-1.5 text-emerald-400">
               <FaTrophy className="text-amber-400" />
               <span className="font-black">{totalPlayerWins}</span>
-              <span>Total Player Victories</span>
+              <span className="text-emerald-300/80">Wins</span>
             </div>
             {totalGamesPlayed > 0 && (
               <>
@@ -216,25 +173,13 @@ const Lobby = () => {
                     resetScores();
                   }}
                   className="text-[11px] text-purple-400/60 hover:text-rose-400 transition-colors cursor-pointer"
+                  title="Reset Game Stats"
                 >
-                  Reset Stats
+                  Reset
                 </button>
               </>
             )}
           </div>
-        </div>
-      </header>
-
-      {/* 4 Game Modes Grid */}
-      <section className="w-full max-w-5xl px-4 sm:px-6 py-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">Select Game Mode</h2>
-            <p className="text-xs sm:text-sm text-purple-300/70">Pick how you want to challenge the board</p>
-          </div>
-          <span className="text-xs font-bold text-purple-300 bg-purple-950/60 border border-purple-500/40 px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-            4 Modes Available
-          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
