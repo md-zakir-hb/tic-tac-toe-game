@@ -1,4 +1,3 @@
-import React from "react";
 import { FaRegHandPointRight } from "react-icons/fa";
 
 const History = ({ history, jumpTo }) => {
@@ -14,14 +13,14 @@ const History = ({ history, jumpTo }) => {
     return (
       <button
         key={move}
-        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-slate-900 text-xs font-semibold transition-all cursor-pointer text-left active:scale-98 shadow-2xs"
+        className="w-full flex items-center gap-3 px-3.5 py-2 rounded-xl bg-slate-950/80 hover:bg-slate-800 border border-purple-500/30 text-purple-200 hover:text-white text-xs font-semibold transition-all cursor-pointer text-left active:scale-98 shadow-2xs"
         onClick={() => jumpTo(move)}
       >
-        <span className="w-5 h-5 rounded-md bg-indigo-100 text-indigo-700 flex items-center justify-center text-[10px] font-bold">
+        <span className="w-5 h-5 rounded-md bg-purple-950 text-purple-300 border border-purple-500/40 flex items-center justify-center text-[10px] font-bold">
           {move}
         </span>
         <span className="flex-1">{description}</span>
-        <FaRegHandPointRight className="text-indigo-400 text-xs" />
+        <FaRegHandPointRight className="text-purple-400 text-xs" />
       </button>
     );
   });

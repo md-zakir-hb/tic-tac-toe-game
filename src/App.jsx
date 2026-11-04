@@ -1,81 +1,48 @@
-import { useState } from "react";
-import Game from "./Components/Game";
-import GameSettingsCard from "./Components/GameSettingsCard";
-import Home from "./Components/Home";
+import ClassicalArena from "./Components/ClassicalArena";
+import CustomBlitzArena from "./Components/CustomBlitzArena";
+import DiceArena from "./Components/DiceArena";
+import GameSettingsModal from "./Components/GameSettingsModal";
+import Lobby from "./Components/Lobby";
+import Navbar from "./Components/Navbar";
+import VanishingArena from "./Components/VanishingArena";
+import { useGameStore } from "./store/useGameStore";
 
 function App() {
-  const [isStartGame, setIsStartGame] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [player1, setPlayer1] = useState("Player 1");
-  const [player2, setPlayer2] = useState("Player 2");
-  const [tossWinner, setTossWinner] = useState("");
-  const [selectedColor1, setSelectedColor1] = useState("bg-[#fb6f92]");
-  const [selectedColor2, setSelectedColor2] = useState("bg-[#fb8500]");
-  const [selectedIcon1, setSelectedIcon1] = useState("bird");
-  const [selectedIcon2, setSelectedIcon2] = useState("lion");
-  const [matchDuration, setMatchDuration] = useState(20);
+  const { activeMode } = useGameStore();
 
-  const [isRunning, setIsRunning] = useState(false);
-
-  const handleStartGame = () => setIsStartGame(true);
-  const handleCloseGame = () => setIsStartGame(false);
-
-  const handleOpenModal = () => setIsOpenModal(true);
-  const handleCloseModal = () => setIsOpenModal(false);
-
-  const handleToss = () => {
-    const randomValue = Math.floor(Math.random() * 9);
-
-    if (randomValue % 2 === 0) {
-      setTossWinner(player1);
-    } else {
-      setTossWinner(player2);
+  const renderActiveScreen = () => {
+    switch (activeMode) {
+      case "classical":
+        return <ClassicalArena />;
+      case "dice":
+        return <DiceArena />;
+      case "vanishing":
+        return <VanishingArena />;
+      case "custom":
+        return <CustomBlitzArena />;
+      case "lobby":
+      default:
+        return <Lobby />;
     }
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#f8fafc] text-slate-800 flex flex-col items-center justify-start relative selection:bg-indigo-500 selection:text-white">
-      {isStartGame ? (
-        <Game
-          player1={player1}
-          player2={player2}
-          selectedColor1={selectedColor1}
-          selectedColor2={selectedColor2}
-          selectedIcon1={selectedIcon1}
-          selectedIcon2={selectedIcon2}
-          handleCloseGame={handleCloseGame}
-          tossWinner={tossWinner}
-          matchDuration={matchDuration}
-          isRunning={isRunning}
-          setIsRunning={setIsRunning}
-        />
-      ) : (
-        <Home handleOpenModal={handleOpenModal} />
-      )}
+    <div className="min-h-screen w-full bg-[#080612] text-slate-100 flex flex-col items-center justify-start relative selection:bg-purple-600 selection:text-white overflow-x-hidden">
+      {/* Ambient Cyber Glow Layers */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-to-b from-purple-600/20 via-indigo-600/10 to-transparent blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-40 right-[-10%] w-[500px] h-[500px] bg-pink-600/10 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-60 left-[-10%] w-[500px] h-[500px] bg-cyan-600/10 blur-[130px] pointer-events-none -z-10" />
 
-      {isOpenModal && (
-        <GameSettingsCard
-          setPlayer1={setPlayer1}
-          setPlayer2={setPlayer2}
-          player1={player1}
-          player2={player2}
-          tossWinner={tossWinner}
-          handleToss={handleToss}
-          handleStartGame={handleStartGame}
-          handleCloseModal={handleCloseModal}
-          selectedColor1={selectedColor1}
-          selectedColor2={selectedColor2}
-          setSelectedColor1={setSelectedColor1}
-          setSelectedColor2={setSelectedColor2}
-          selectedIcon1={selectedIcon1}
-          selectedIcon2={selectedIcon2}
-          setSelectedIcon1={setSelectedIcon1}
-          setSelectedIcon2={setSelectedIcon2}
-          matchDuration={matchDuration}
-          setMatchDuration={setMatchDuration}
-          setIsRunning={setIsRunning}
-        />
-      )}
+      {/* Top Navigation (Transparent, No bottom border) */}
+      <Navbar />
+
+      {/* Main Dynamic Viewport */}
+      <main className="w-full flex-1 flex flex-col items-center justify-start">
+        {renderActiveScreen()}
+      </main>
+
+      {/* Global Modals */}
+      <GameSettingsModal />
     </div>
   );
 }

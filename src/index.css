@@ -43,7 +43,60 @@ body {
   box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
 }
 
-/* Playful Dice Shake Animation */
+/* 3D Typography & Esports Cyber Neon Styling */
+.text-3d-yellow {
+  color: #fef08a;
+  text-shadow:
+    -2px -2px 0 #ca8a04,
+     2px -2px 0 #ca8a04,
+    -2px  2px 0 #ca8a04,
+     2px  2px 0 #ca8a04,
+     0 3px 0 #a16207,
+     0 6px 0 #713f12,
+     0 8px 0 #451a03,
+     0 12px 25px rgba(250, 204, 21, 0.5);
+}
+
+.text-3d-purple {
+  color: #f3e8ff;
+  text-shadow:
+    -2px -2px 0 #9333ea,
+     2px -2px 0 #9333ea,
+    -2px  2px 0 #9333ea,
+     2px  2px 0 #9333ea,
+     0 3px 0 #7e22ce,
+     0 6px 0 #581c87,
+     0 8px 0 #3b0764,
+     0 12px 30px rgba(168, 85, 247, 0.6);
+}
+
+.cyber-neon-border {
+  border: 2px solid #a855f7;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.15);
+}
+
+.cyber-neon-border-gold {
+  border: 2px solid #facc15;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.45);
+}
+
+.neon-glow-btn {
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+  transition: all 0.25s ease;
+}
+.neon-glow-btn:hover {
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.9), 0 0 15px rgba(216, 180, 254, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Perspective Cyber Rays */
+.cyber-rays-pattern {
+  background-image: 
+    radial-gradient(ellipse at 70% 50%, rgba(168, 85, 247, 0.28) 0%, transparent 60%),
+    linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
 @keyframes dice-shake {
   0% { transform: rotate(0deg) scale(1); }
   25% { transform: rotate(-10deg) scale(1.06); }
